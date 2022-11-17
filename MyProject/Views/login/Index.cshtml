@@ -1,0 +1,79 @@
+﻿@model MyProject.Models.login
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head> 
+<style>
+    #login-div{
+        position:absolute;
+        left:35%;
+        top:40%;
+        border:1px solid #0094ff;
+        padding:10px 10px;
+    }
+    .field-validation-error{color:red;}
+    .td {color: blue;}
+    .border {border: 1px solid #0094ff;}
+</style>
+<body>
+    <div id="login-div">
+        @using (Html.BeginForm("autherize", "login", FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td></td>
+                    <td style="text-decoration:underline">Login</td>
+                </tr>
+                <tr>
+                    <td class="td">@Html.LabelFor(model => model.username)</td>
+                    <td class="border">@Html.EditorFor(model => model.username)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.ValidationMessageFor(model => model.username)</td>
+                </tr>
+                <tr>
+                    <td class="td">@Html.LabelFor(model => model.password)</td>
+                    <td class="border">@Html.EditorFor(model => model.password)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.ValidationMessageFor(model => model.password)</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label class="field-validation-error">@Html.DisplayFor(model => model.loginerrormessage)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="name" value="Login" />
+                        <input type="reset" name="name" value="Clear" />
+
+                    </td>
+
+                </tr>
+
+
+            </table>
+
+
+        }
+        <a href="@Url.Action("register","registration")">Register</a>
+
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+</body>
+</html>
